@@ -34,6 +34,14 @@
   }
   
   const updateProduct = () => {
+    const allFieldsFilled = Object.entries(formData.value)
+        .filter(([key]) => key !== 'image')
+        .every(([_, value]) => value !== '')
+
+    if (!allFieldsFilled) {
+        showAlert('لطفا همه فیلدها را پر کنید')
+        return
+    }
     axios.put(`https://ahuan.ir/api/foods/${productId}`, formData.value)
       .then(response => {
         showAlert('محصول با موفقیت به‌روزرسانی شد!')

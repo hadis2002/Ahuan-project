@@ -153,6 +153,14 @@
                 </Popper>
               </div>
             </template>
+
+            <template #Image="data">
+                <img
+                :src="data.value.Image || defaultImage"
+                alt="Product Image"
+                class="w-8 h-8"
+                />
+            </template>
           </vue3-datatable>
         </div>
       </div>
@@ -168,6 +176,7 @@
   import { showAlert } from "../../utils/alert";
   import { onMounted, ref, computed } from "vue";
   import { useRouter } from "vue-router";
+  import defaultImage from '../../assets/images/defaultIcon.svg'
   
   const router = useRouter();
   const dataTable = ref(null);
